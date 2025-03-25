@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đang chuyển đến biểu mẫu...</title>
+  <script>
+    window.onload = function () {
+      // Lấy thời gian hiện tại, định dạng yyyy-mm-ddTHH:MM:SS
+      const now = new Date();
+      const yyyyMMddHHmmss = now.toISOString().slice(0, 19); // "2025-03-25T13:47:20"
+      const encodedTimestamp = encodeURIComponent(yyyyMMddHHmmss);
+
+      // ID entry của câu hỏi "Thời gian bắt đầu"
+      const entryId = 'entry.1708083880';
+
+      // Link Google Form gốc
+      const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdiasUZy1-YlYTKxrLmQNhlxO9AVVi8Gz0EZ7TL-KbtugVerA/viewform';
+
+      // Tạo link có sẵn thời gian
+      const finalUrl = `${formUrl}?usp=pp_url&${entryId}=${encodedTimestamp}`;
+
+      // Chuyển hướng sau 0.5s
+      setTimeout(() => {
+        window.location.href = finalUrl;
+      }, 500);
+    };
+  </script>
+</head>
+<body>
+  <h2>⏳ Đang chuyển hướng đến biểu mẫu...</h2>
+  <p>Nếu không được chuyển sau vài giây, vui lòng <a id="manualLink" href="#">bấm vào đây</a>.</p>
+
+  <script>
+    document.getElementById('manualLink').href = window.location.href; // Cập nhật link thủ công
+  </script>
+</body>
+</html>
